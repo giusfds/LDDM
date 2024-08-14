@@ -36,7 +36,7 @@ We had the idea of ​​making a mobile app that shows food places, toys, and t
 This project is a starting point for a Flutter application. Important detail, I've never used flutter in my life, so don't expect it to be the best work ever. I'm learning and I'm trying to do my best.
 
 ### Rules
-- Please, don't push directly to the main branch. Create a new branch and make a pull request.
+- Please, don't push directly to the main branch. Create a new branch and make a pull request to `DEV` branch.
 - Make sure to comment your code in English.
 - Make sure to comment your commit following the pattern: 
     - create => `create: create a new file`
