@@ -7,7 +7,7 @@ This is a repository for the course "Laboratório de Desenvolvimento de Disposit
 please, put your name here if you are contributing to this repository, this was another hint to my group. (alphabetical order)
 
 - [Giuseppe Cordeiro](https://www.linkedin.com/in/giuseppecordeiro/)
-- [Kaiky França](https://www.linkedin.com/in/glkaiky/)
+- [Kaiky França :D](https://www.linkedin.com/in/glkaiky/)
 
 ## Projects
 - [application_lddm](/application_lddm/)
