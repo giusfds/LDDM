@@ -9,6 +9,7 @@ please, put your name here if you are contributing to this repository, this was 
 - [Giuseppe Cordeiro](https://www.linkedin.com/in/giuseppecordeiro/)
 - [Kaiky França](https://www.linkedin.com/in/glkaiky/)
 - [Samuel Horta de Faria](www.linkedin.com/in/samuelhortafaria)
+- [Suzane Lemos](https://www.linkedin.com/in/suzane-lemos)
 
 ## Projects
 - [application_lddm](/application_lddm/)
