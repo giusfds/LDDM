@@ -9,29 +9,11 @@ please, put your name here if you are contributing to this repository, this was 
 - [Giuseppe Cordeiro](https://www.linkedin.com/in/giuseppecordeiro/)
 - [Kaiky França](https://www.linkedin.com/in/glkaiky/)
 - [Samuel Horta de Faria](www.linkedin.com/in/samuelhortafaria)
+- [Suzane Lemos](https://www.linkedin.com/in/suzane-lemos)
 
 ## Projects
 - [application_lddm](/application_lddm/)
 
-We had the idea of ​​making a mobile app that shows food places, toys, and things for pets near you. We are still thinking about the idea, but we are already working on the project. We are using Flutter and Dart to develop the app.
-
-### How to run the project
-- Install Flutter and Dart
-- Clone this repository
-- Open the project in your IDE
-- Run the project in android or ios emulator
-
-### To do on the project
-- interface design
-- UI/UX
-- map
-- gps
-- database
-- user authentication
-- user registration
-- user login
-- user profile
-- user logout
 
 ## Getting Started
 This project is a starting point for a Flutter application. Important detail, I've never used flutter in my life, so don't expect it to be the best work ever. I'm learning and I'm trying to do my best.
