@@ -71,11 +71,7 @@ class UserProfileScreen extends StatelessWidget {
             // Botão de Upgrade
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-
-                // NAO SEI CONCERTAR ESSE ERRO
-
-                primary: Colors.yellow, // Cor do fundo do botão
-                onPrimary: Colors.black, // Cor do texto do botão
+                foregroundColor: Colors.black, backgroundColor: Colors.yellow, // Cor do texto do botão
               ),
               onPressed: () {
                 // Ação para upgrade
