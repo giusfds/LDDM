@@ -52,17 +52,22 @@ class MyHomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             IconButton(
-              // se pa tem que trocar coisa aqui 
-              icon: Icon(Icons.emoji_emotions),
-              onPressed: () {},
+              icon: Icon(Icons.public), // Ícone do globo
+              onPressed: () {
+                // Ação para navegação ao conteúdo relacionado
+              },
             ),
             IconButton(
-              icon: Icon(Icons.search),
-              onPressed: () {},
+              icon: Icon(Icons.chat), // Ícone de chat
+              onPressed: () {
+                // Ação para navegação ao histórico de conversas
+              },
             ),
             IconButton(
-              icon: Icon(Icons.settings),
-              onPressed: () {},
+              icon: Icon(Icons.person), // Ícone de perfil de usuário
+              onPressed: () {
+                // Ação para navegação ao perfil do usuário
+              },
             ),
           ],
         ),
