@@ -1,31 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
 
-  Future<void> configureBackground() async{
-    const androidConfig = FlutterBackgroundAndroidConfig(
-      notificationTitle: "App rodando em BackGround",
-      notificationText: "Esse e um teste feito em android",
-      notificationImportance: AndroidNotificationImportance.normal,
-        notificationIcon: AndroidResource(name: 'logo', defType: 'drawable'),
-    );
-    bool sucess =   await FlutterBackground.initialize(androidConfig: androidConfig);
+Future<void> configureBackground() async {
+  const androidConfig = FlutterBackgroundAndroidConfig(
+    notificationTitle: "App rodando em BackGround",
+    notificationText: "Esse é um teste feito em android",
+    notificationImportance: AndroidNotificationImportance.normal,
+    notificationIcon: AndroidResource(name: 'logo', defType: 'drawable'),
+  );
 
-    if(sucess){
-      print("Deu boa");
-      await FlutterBackground.enableBackgroundExecution();
-    }else{
-      print('Fudeu');
-    }
+  bool success = await FlutterBackground.initialize(androidConfig: androidConfig);
+
+  if (success) {
+    print("Deu boa");
+    await FlutterBackground.enableBackgroundExecution();
+  } else {
+    print('Fudeu');
   }
+}
 
-
-void main() async{
-  //Certificar que tudo foi inicializado corretamente
+void main() async {
+  // Certificar que tudo foi inicializado corretamente
   WidgetsFlutterBinding.ensureInitialized();
-  //chamar o background
+  // Chamar o background
   await configureBackground();
 
-main() => runApp(const PerguntaApp());
+  // Iniciar o aplicativo
+  runApp(const PerguntaApp());
+}
 
 class PerguntaApp extends StatelessWidget {
   const PerguntaApp({super.key});
@@ -52,11 +54,13 @@ class PerguntaApp extends StatelessWidget {
             ),
           ],
         ),
-        body: const Text('Flutter!',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.white,
-            )),
+        body: const Text(
+          'Flutter!',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.white,
+          ),
+        ),
         bottomNavigationBar: BottomAppBar(
           color: const Color.fromARGB(255, 23, 73, 3),
           child: Padding(
@@ -92,5 +96,4 @@ class PerguntaApp extends StatelessWidget {
       ),
     );
   }
-}
 }
