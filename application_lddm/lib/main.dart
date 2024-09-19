@@ -21,7 +21,7 @@
 
     void main() async {
       // Certificar que tudo foi inicializado corretamente
-      WidgetsFlutterBinding.ensureInitialized();      
+      WidgetsFlutterBinding.ensureInitialized();
       // Chamar o background
       await configureBackground();
 
