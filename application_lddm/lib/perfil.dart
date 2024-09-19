@@ -7,7 +7,9 @@ class UserProfileScreen extends StatelessWidget {
   final String LINGUA_NATIVA_BD = '';
   final String LOCAL_BD = '';
   final String IMAGEM_PERFIL_BD = ''; // URL da foto de perfil
-  final List<String> LINGUAS_BD = ['']; // dropdown com as linguagens usadas recentemente
+  final List<String> LINGUAS_BD = [
+    ''
+  ]; // dropdown com as linguagens usadas recentemente
 
   @override
   Widget build(BuildContext context) {
@@ -71,11 +73,10 @@ class UserProfileScreen extends StatelessWidget {
             // Botão de Upgrade
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-
                 // NAO SEI CONCERTAR ESSE ERRO
 
-                primary: Colors.yellow, // Cor do fundo do botão
-                onPrimary: Colors.black, // Cor do texto do botão
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.yellow, // Cor do texto do botão
               ),
               onPressed: () {
                 // Ação para upgrade

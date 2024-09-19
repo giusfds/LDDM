@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/notification_template_part_time.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/notification_template_part_time.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/custom_dialog.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/custom_dialog.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/notification_template_custom_big.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/ime_base_split_test_activity.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/ime_base_split_test_activity.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/notification_action.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/notification_action.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/notification_action_tombstone.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/notification_action_tombstone.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/notification_template_icon_group.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/notification_template_part_chronometer.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "de.julianassmann.flutter_background-merged_res-26:/layout/ime_secondary_split_test_activity.xml",
+        "source": "de.julianassmann.flutter_background-core-1.13.1-19:/layout/ime_secondary_split_test_activity.xml"
+    }
+]
