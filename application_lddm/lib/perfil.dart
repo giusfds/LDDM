@@ -1,3 +1,4 @@
+import 'package:application_lddm/bottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -7,7 +8,9 @@ class UserProfileScreen extends StatelessWidget {
   final String LINGUA_NATIVA_BD = '';
   final String LOCAL_BD = '';
   final String IMAGEM_PERFIL_BD = ''; // URL da foto de perfil
-  final List<String> LINGUAS_BD = ['']; // dropdown com as linguagens usadas recentemente
+  final List<String> LINGUAS_BD = [
+    ''
+  ]; // dropdown com as linguagens usadas recentemente
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +74,8 @@ class UserProfileScreen extends StatelessWidget {
             // Botão de Upgrade
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.black, backgroundColor: Colors.yellow, // Cor do texto do botão
+                foregroundColor: Colors.black,
+                backgroundColor: Colors.yellow, // Cor do texto do botão
               ),
               onPressed: () {
                 // Ação para upgrade
@@ -81,31 +85,7 @@ class UserProfileScreen extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.public), // Ícone de globo
-              onPressed: () {
-                // Ação para navegação ao conteúdo relacionado
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.chat), // Ícone de chat
-              onPressed: () {
-                // Ação para navegação ao histórico de conversas
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.person), // Ícone de perfil de usuário
-              onPressed: () {
-                // Ação para navegação ao perfil do usuário
-              },
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: Bottomnavigationbar(),
     );
   }
 }

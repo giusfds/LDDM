@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'bottomNavigationBar.dart';
+
 class CountryLanguageScreen extends StatefulWidget {
   @override
   _CountryLanguageScreenState createState() => _CountryLanguageScreenState();
@@ -56,34 +58,12 @@ class _CountryLanguageScreenState extends State<CountryLanguageScreen> {
                 width: 200,
               ),
             ),
-
             Spacer(),
-
             // Barra de navegação inferior
-            BottomNavigationBar(
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.language),
-                  label: 'País',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.chat),
-                  label: 'Chat',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Perfil',
-                ),
-              ],
-              currentIndex: 0, // Selecionar a aba atual (0 é a primeira aba)
-              onTap: (index) {
-                // Função para mudar entre as telas
-                // Navigator.push(...) se necessário
-              },
-            ),
           ],
         ),
       ),
+      bottomNavigationBar: Bottomnavigationbar(),
     );
   }
 }

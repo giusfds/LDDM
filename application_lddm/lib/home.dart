@@ -1,3 +1,4 @@
+import 'package:application_lddm/bottomNavigationBar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -47,31 +48,7 @@ class MyHomePage extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.public), // Ícone do globo
-              onPressed: () {
-                // Ação para navegação ao conteúdo relacionado
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.chat), // Ícone de chat
-              onPressed: () {
-                // Ação para navegação ao histórico de conversas
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.person), // Ícone de perfil de usuário
-              onPressed: () {
-                // Ação para navegação ao perfil do usuário
-              },
-            ),
-          ],
-        ),
-      ),
+      bottomNavigationBar: Bottomnavigationbar(),
     );
   }
 }

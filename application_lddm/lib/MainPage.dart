@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Perfil.dart';
+import 'bottomNavigationBar.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,52 +33,7 @@ class HomePage extends StatelessWidget {
             color: Colors.white,
           ),
         ),
-        bottomNavigationBar: BottomAppBar(
-          color: const Color.fromARGB(255, 23, 73, 3),
-          child: Padding(
-            padding: const EdgeInsets.all(20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.home),
-                  color: Colors.white,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(Icons.account_balance_wallet),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => const HomePage()),
-                    );
-                  },
-                  color: Colors.white,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.credit_card),
-                  onPressed: () {},
-                  color: Colors.white,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.settings),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => UserProfileScreen()),
-                    );
-                  },
-                  color: Colors.white,
-                ),
-              ],
-            ),
-          ),
-        ),
+        bottomNavigationBar: Bottomnavigationbar(),
         backgroundColor: const Color.fromARGB(255, 3, 26, 0),
       ),
     );
