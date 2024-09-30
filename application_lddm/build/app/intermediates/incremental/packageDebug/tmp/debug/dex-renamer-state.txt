@@ -1,4 +1,4 @@
-#Thu Sep 19 11:56:10 BRT 2024
+#Mon Sep 30 15:32:30 BRT 2024
 base.0=/home/glkaiky/Desktop/LDDM/application_lddm/build/app/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/home/glkaiky/Desktop/LDDM/application_lddm/build/app/intermediates/dex/debug/mergeLibDexDebug/0/classes.dex
 base.2=/home/glkaiky/Desktop/LDDM/application_lddm/build/app/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
