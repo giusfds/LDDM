@@ -1,4 +1,6 @@
+import 'package:application_lddm/home.dart';
 import 'package:flutter/material.dart';
+import 'globo.dart';
 
 class UserProfileScreen extends StatelessWidget {
   // Variáveis que virão do banco de dados
@@ -72,47 +74,52 @@ class UserProfileScreen extends StatelessWidget {
                 label: Text('Histórico de Línguas'),
               ),
               SizedBox(height: 16), // Adicionei um espaço aqui
-              // Botão de Upgrade
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.black, // Cor do texto do botão
-                  backgroundColor: Colors.yellow, // Cor de fundo do botão
-                ),
-                onPressed: () {
-                  // Ação para upgrade
-                },
-                child: Text('Upgrade \$'),
-              ),
+              // Botão de UpgCountryLanguageScreen
             ],
           ),
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.public), // Ícone de globo
-              onPressed: () {
-                // Ação para navegação ao conteúdo relacionado
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.chat), // Ícone de chat
-              onPressed: () {
-                // Ação para navegação ao histórico de conversas
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.person), // Ícone de perfil de usuário
-              onPressed: () {
-                // Ação para navegação ao perfil do usuário
-              },
-            ),
-          ],
-        ),
-      ),
-    );
+          // Coloque o BottomNavigationBar aqui, dentro do Scaffold
+          bottomNavigationBar: BottomNavigationBar(
+            
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.language),
+                label: 'País',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.chat),
+                label: 'Chat',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.person),
+                label: 'Perfil',
+              ),
+            ],
+            currentIndex: 2, // Selecionar a aba atual (0 é a primeira aba)
+            onTap: (index) {
+              if (index == 0) {
+                // Navegação para a tela de países
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => CountryLanguageScreen()), // Substitua por sua tela
+                );
+              } else if (index == 1) {
+                // Navegação para a tela de chat
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyHomePage()), // Substitua por sua tela
+                );
+              } else if (index == 2) {
+                // Navegação para a tela de perfil
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => UserProfileScreen()),
+                );
+              }
+            },
+          ),
+      );
   }
 }
   

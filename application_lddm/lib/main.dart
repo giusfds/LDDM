@@ -1,10 +1,11 @@
+import 'package:application_lddm/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
 import 'perfil.dart';
 
 Future<void> configureBackground() async {
   const androidConfig = FlutterBackgroundAndroidConfig(
-    notificationTitle: "App rodando em BackGround",
+    notificationTitle: "App rodando em Background",
     notificationText: "Esse é um teste feito em android",
     notificationImportance: AndroidNotificationImportance.normal,
     notificationIcon: AndroidResource(name: 'logo', defType: 'drawable'),
@@ -23,22 +24,23 @@ Future<void> configureBackground() async {
 
 void main() async {
   // Certificar que tudo foi inicializado corretamente
-  WidgetsFlutterBinding.ensureInitialized();
+  //WidgetsFlutterBinding.ensureInitialized();
   // Chamar o background
-  await configureBackground();
+ //      await configureBackground();
 
   // Iniciar o aplicativo
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatelessWidget{
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-      home: UserProfileScreen(), // Chama o seu UserProfileScreen
+      home: MyHomePage(),
     );
   }
 }
+
 
 class PerguntaApp extends StatelessWidget {
   const PerguntaApp({super.key});
@@ -52,16 +54,19 @@ class PerguntaApp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 23, 73, 3),
           leading: IconButton(
             icon: const Icon(Icons.menu),
-            onPressed: () {},
+            onPressed: () {
+              // Redirecionar para UserProfileScreen ao clicar no botão de menu
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserProfileScreen()),
+              );
+            },
           ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.search),
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => UserProfileScreen()),
-                );
+                // Você pode adicionar um redirecionamento ou outra ação aqui, se desejar
               },
             ),
             IconButton(
@@ -73,7 +78,7 @@ class PerguntaApp extends StatelessWidget {
         body: const Text(
           'Flutter!',
           style: TextStyle(
-            fontSize: 30,
+            fontSize: 30, 
             color: Colors.white,
           ),
         ),
