@@ -1,31 +1,46 @@
+import 'package:application_lddm/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
+import 'perfil.dart';
 
-  Future<void> configureBackground() async{
-    const androidConfig = FlutterBackgroundAndroidConfig(
-      notificationTitle: "App rodando em BackGround",
-      notificationText: "Esse e um teste feito em android",
-      notificationImportance: AndroidNotificationImportance.normal,
-        notificationIcon: AndroidResource(name: 'logo', defType: 'drawable'),
-    );
-    bool sucess =   await FlutterBackground.initialize(androidConfig: androidConfig);
+Future<void> configureBackground() async {
+  const androidConfig = FlutterBackgroundAndroidConfig(
+    notificationTitle: "App rodando em Background",
+    notificationText: "Esse é um teste feito em android",
+    notificationImportance: AndroidNotificationImportance.normal,
+    notificationIcon: AndroidResource(name: 'logo', defType: 'drawable'),
+  );
 
-    if(sucess){
-      print("Deu boa");
-      await FlutterBackground.enableBackgroundExecution();
-    }else{
-      print('Fudeu');
-    }
+  bool success =
+      await FlutterBackground.initialize(androidConfig: androidConfig);
+
+  if (success) {
+    print("Deu boa");
+    await FlutterBackground.enableBackgroundExecution();
+  } else {
+    print('Fudeu');
   }
+}
 
+void main() async {
+  // Certificar que tudo foi inicializado corretamente
+  //WidgetsFlutterBinding.ensureInitialized();
+  // Chamar o background
+ //      await configureBackground();
 
-void main() async{
-  //Certificar que tudo foi inicializado corretamente
-  WidgetsFlutterBinding.ensureInitialized();
-  //chamar o background
-  await configureBackground();
+  // Iniciar o aplicativo
+  runApp(MyApp());
+}
 
-main() => runApp(const PerguntaApp());
+class MyApp extends StatelessWidget{
+  @override
+  Widget build(BuildContext context){
+    return MaterialApp(
+      home: MyHomePage(),
+    );
+  }
+}
+
 
 class PerguntaApp extends StatelessWidget {
   const PerguntaApp({super.key});
@@ -39,12 +54,20 @@ class PerguntaApp extends StatelessWidget {
           backgroundColor: const Color.fromARGB(255, 23, 73, 3),
           leading: IconButton(
             icon: const Icon(Icons.menu),
-            onPressed: () {},
+            onPressed: () {
+              // Redirecionar para UserProfileScreen ao clicar no botão de menu
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => UserProfileScreen()),
+              );
+            },
           ),
           actions: <Widget>[
             IconButton(
               icon: const Icon(Icons.search),
-              onPressed: () {},
+              onPressed: () {
+                // Você pode adicionar um redirecionamento ou outra ação aqui, se desejar
+              },
             ),
             IconButton(
               icon: const Icon(Icons.more_vert),
@@ -52,11 +75,13 @@ class PerguntaApp extends StatelessWidget {
             ),
           ],
         ),
-        body: const Text('Flutter!',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.white,
-            )),
+        body: const Text(
+          'Flutter!',
+          style: TextStyle(
+            fontSize: 30, 
+            color: Colors.white,
+          ),
+        ),
         bottomNavigationBar: BottomAppBar(
           color: const Color.fromARGB(255, 23, 73, 3),
           child: Padding(

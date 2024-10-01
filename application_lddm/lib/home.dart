@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(MyApp());
-}
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'globo.dart';
+import 'perfil.dart';
 
 class MyApp extends StatelessWidget {
   @override
@@ -13,7 +13,52 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  String? selectedLanguage; // Variável para armazenar o idioma selecionado
+  List<String> languages = []; // Lista para armazenar as línguas
+
+  @override
+  void initState() {
+    super.initState();
+    fetchLanguages(); // Chama a função para buscar as línguas
+  }
+
+Future<void> fetchLanguages() async {
+  print("Fetching languages...");
+  try {
+    final response = await http.get(Uri.parse("https://restcountries.com/v3.1/all"));
+    print("Response status: ${response.statusCode}");
+    
+    if (response.statusCode == 200) {
+      final List<dynamic> data = json.decode(response.body);
+      final Set<String> languageSet = {};
+
+      for (var country in data) {
+        if (country['languages'] != null) {
+          // Adiciona as línguas ao conjunto, garantindo que sejam Strings
+          country['languages'].forEach((key, value) {
+            languageSet.add(value.toString());
+          });
+        }
+      }
+
+      setState(() {
+        languages = languageSet.toList(); // Atualiza a lista de línguas
+      }); 
+    } else {
+      throw Exception('Falha ao carregar as línguas');
+    }
+  } catch (e) {
+    print("Erro: $e");
+  }
+}
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,50 +72,70 @@ class MyHomePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               child: DropdownButton<String>(
-                value: 'Idioma',
-                items: <String>['Idioma', 'Português', 'Inglês'].map((String value) {
-                  // colocar a parte funcional aqui @GLkaiky
-                  // aqui e tipo as opcoes que temos para colcoar de lingua no app
+                hint: Text('Selecione um idioma'), // Sugestão para o usuário
+                value: selectedLanguage,
+                items: languages.map((String lang) {
                   return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
+                    value: lang,
+                    child: Text(lang),
                   );
                 }).toList(),
-                onChanged: (_) {},
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectedLanguage = newValue; // Atualiza o idioma selecionado
+                  });
+                },
               ),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                // Ação para o botão "Ativar"
+                print("Idioma selecionado: $selectedLanguage");
+              },
               child: Text('Ativar'),
-              // @GLKaiky!
             ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              icon: Icon(Icons.public), // Ícone do globo
-              onPressed: () {
-                // Ação para navegação ao conteúdo relacionado
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.chat), // Ícone de chat
-              onPressed: () {
-                // Ação para navegação ao histórico de conversas
-              },
-            ),
-            IconButton(
-              icon: Icon(Icons.person), // Ícone de perfil de usuário
-              onPressed: () {
-                // Ação para navegação ao perfil do usuário
-              },
-            ),
-          ],
-        ),
+
+      // Coloque o BottomNavigationBar aqui, dentro do Scaffold
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.language),
+            label: 'País',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
+          ),
+        ],
+        currentIndex: 1, // Selecionar a aba atual (0 é a primeira aba)
+        onTap: (index) {
+          if (index == 0) {
+            // Navegação para a tela de países
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CountryLanguageScreen()), // Substitua por sua tela
+            );
+          } else if (index == 1) {
+            // Navegação para a tela de chat
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()), // Substitua por sua tela
+            );
+          } else if (index == 2) {
+            // Navegação para a tela de perfil
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UserProfileScreen()),
+            );
+          }
+        },
       ),
     );
   }

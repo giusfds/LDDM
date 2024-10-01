@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'home.dart';
+import 'perfil.dart';
 
 class CountryLanguageScreen extends StatefulWidget {
   @override
@@ -56,34 +58,50 @@ class _CountryLanguageScreenState extends State<CountryLanguageScreen> {
                 width: 200,
               ),
             ),
-
             Spacer(),
-
-            // Barra de navegação inferior
-            BottomNavigationBar(
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.language),
-                  label: 'País',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.chat),
-                  label: 'Chat',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Perfil',
-                ),
-              ],
-              currentIndex: 0, // Selecionar a aba atual (0 é a primeira aba)
-              onTap: (index) {
-                // Função para mudar entre as telas
-                // Navigator.push(...) se necessário
-              },
-            ),
           ],
         ),
+      ),
+      // Coloque o BottomNavigationBar aqui, dentro do Scaffold
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.language),
+            label: 'País',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chat',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            label: 'Perfil',
+          ),
+        ],
+        currentIndex: 0, // Selecionar a aba atual (0 é a primeira aba)
+        onTap: (index) {
+          if (index == 0) {
+            // Navegação para a tela de países
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => CountryLanguageScreen()),
+            );
+          } else if (index == 1) {
+            // Navegação para a tela de chat
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+            );
+          } else if (index == 2) {
+            // Navegação para a tela de perfil
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UserProfileScreen()),
+            );
+          }
+        },
       ),
     );
   }
 }
+    
