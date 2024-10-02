@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'home.dart';
 import 'perfil.dart';
 
@@ -90,13 +91,13 @@ class _CountryLanguageScreenState extends State<CountryLanguageScreen> {
             // Navegação para a tela de chat
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHomePage()),
+              PageTransition(child: MyHomePage(), type: PageTransitionType.rightToLeft),
             );
           } else if (index == 2) {
             // Navegação para a tela de perfil
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => UserProfileScreen()),
+              PageTransition(child: UserProfileScreen(), type: PageTransitionType.rightToLeft),
             );
           }
         },

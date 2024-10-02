@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:page_transition/page_transition.dart';
 import 'globo.dart';
 import 'perfil.dart';
 
@@ -121,7 +122,9 @@ Future<void> fetchLanguages() async {
             // Navegação para a tela de países
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => CountryLanguageScreen()), // Substitua por sua tela
+              PageTransition(child: CountryLanguageScreen(), 
+              type: PageTransitionType.leftToRight,
+              ), // Substitua por sua tela
             );
           } else if (index == 1) {
             // Navegação para a tela de chat
@@ -133,7 +136,7 @@ Future<void> fetchLanguages() async {
             // Navegação para a tela de perfil
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => UserProfileScreen()),
+              PageTransition(child: UserProfileScreen(), type: PageTransitionType.rightToLeft ),
             );
           }
         },
