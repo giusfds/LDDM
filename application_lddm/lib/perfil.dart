@@ -1,5 +1,6 @@
 import 'package:application_lddm/home.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 import 'globo.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -102,13 +103,13 @@ class UserProfileScreen extends StatelessWidget {
                 // Navegação para a tela de países
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => CountryLanguageScreen()), // Substitua por sua tela
+                  PageTransition(child: CountryLanguageScreen(), type: PageTransitionType.leftToRight),
                 );
               } else if (index == 1) {
                 // Navegação para a tela de chat
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => MyHomePage()), // Substitua por sua tela
+                  PageTransition(child: MyHomePage(), type: PageTransitionType.leftToRight),
                 );
               } else if (index == 2) {
                 // Navegação para a tela de perfil
