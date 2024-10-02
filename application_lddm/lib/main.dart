@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget{
   }
 }
 
-
+/*
 class PerguntaApp extends StatelessWidget {
   const PerguntaApp({super.key});
 
@@ -117,4 +117,4 @@ class PerguntaApp extends StatelessWidget {
       ),
     );
   }
-}
+}*/

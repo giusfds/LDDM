@@ -30,25 +30,26 @@ class _MyHomePageState extends State<MyHomePage> {
 
 Future<void> fetchLanguages() async {
   print("Fetching languages...");
-  try {
-    final response = await http.get(Uri.parse("https://restcountries.com/v3.1/all"));
-    print("Response status: ${response.statusCode}");
-    
-    if (response.statusCode == 200) {
-      final List<dynamic> data = json.decode(response.body);
-      final Set<String> languageSet = {};
+    try {
+      final response = await http.get(Uri.parse("https://restcountries.com/v3.1/all"));
+      print("Response status: ${response.statusCode}");
+      
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(response.body);
+        final Set<String> languageSet = {};
 
-      for (var country in data) {
-        if (country['languages'] != null) {
-          // Adiciona as línguas ao conjunto, garantindo que sejam Strings
-          country['languages'].forEach((key, value) {
-            languageSet.add(value.toString());
-          });
+        for (var country in data) {
+          if (country['languages'] != null) {
+            // Adiciona as línguas ao conjunto, garantindo que sejam Strings
+            country['languages'].forEach((key, value) {
+              languageSet.add(value.toString());
+            });
+          }
         }
-      }
 
       setState(() {
         languages = languageSet.toList(); // Atualiza a lista de línguas
+        languages = languageSet.toList()..sort();       
       }); 
     } else {
       throw Exception('Falha ao carregar as línguas');
