@@ -26,7 +26,7 @@ void main() async {
   // Certificar que tudo foi inicializado corretamente
   //WidgetsFlutterBinding.ensureInitialized();
   // Chamar o background
- //      await configureBackground();
+ //      await configureBackground(); 
 
   // Iniciar o aplicativo
   runApp(MyApp());
@@ -36,6 +36,7 @@ class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
     return MaterialApp(
+      debugShowCheckedModeBanner:false,  
       home: MyHomePage(),
     );
   }
