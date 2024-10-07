@@ -111,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onTap: (){
                       },
                       child: Text(
-                        'Esquecei minha senha',
+                        'Esqueci minha senha',
                         style: TextStyle(
                           color: Colors.black,
                           fontSize: 15,

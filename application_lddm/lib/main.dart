@@ -2,10 +2,11 @@ import 'package:application_lddm/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
 import 'perfil.dart';
+import 'loadingInterface.dart';
 
 Future<void> configureBackground() async {
   const androidConfig = FlutterBackgroundAndroidConfig(
-    notificationTitle: "App rodando em Background",
+    notificationTitle: "App rodando em Background",   
     notificationText: "Esse é um teste feito em android",
     notificationImportance: AndroidNotificationImportance.normal,
     notificationIcon: AndroidResource(name: 'logo', defType: 'drawable'),
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner:false,  
-      home: MyHomePage(),
+      home: SplashScreen(),
     );
   }
 }

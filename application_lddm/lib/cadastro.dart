@@ -93,7 +93,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira sua idade';
-                  }
+                  }   
                   if (int.tryParse(value) == null) {
                     return 'Por favor, insira um número válido';
                   } 
