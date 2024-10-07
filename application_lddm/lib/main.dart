@@ -22,7 +22,7 @@ Future<void> configureBackground() async {
     print('Fudeu');
   }
 }
-
+  
 void main() async {
   // Certificar que tudo foi inicializado corretamente
   //WidgetsFlutterBinding.ensureInitialized();
