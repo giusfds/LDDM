@@ -19,10 +19,10 @@ Future<void> configureBackground() async {
     print("Deu boa");
     await FlutterBackground.enableBackgroundExecution();
   } else {
-    print('Fudeu');
+    print('Fudeu');     
   }
-}
-  
+} 
+
 void main() async {
   // Certificar que tudo foi inicializado corretamente
   //WidgetsFlutterBinding.ensureInitialized();
