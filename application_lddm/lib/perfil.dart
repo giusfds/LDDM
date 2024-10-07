@@ -2,6 +2,7 @@ import 'package:application_lddm/home.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'globo.dart';
+import 'login.dart';
 
 class UserProfileScreen extends StatelessWidget {
   // Variáveis que virão do banco de dados
@@ -76,7 +77,21 @@ class UserProfileScreen extends StatelessWidget {
               ),
               SizedBox(height: 16), // Adicionei um espaço aqui
               // Botão de UpgCountryLanguageScreen
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    PageTransition(
+                      child: LoginScreen(),
+                      type: PageTransitionType.bottomToTop,
+                    ),
+                  );
+                },      
+                child: Text("Sair"),
+              )
             ],
+            
+            
           ),
         ),
       ),

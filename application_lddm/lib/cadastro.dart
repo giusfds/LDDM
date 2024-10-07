@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:application_lddm/objects/languages.dart';
 
 class UserRegistrationScreen extends StatefulWidget {
   @override
@@ -18,8 +19,20 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
 
   // Variável para armazenar a língua nativa selecionada
   String? _selectedLanguage;
-  List<String> _languages = ['Português', 'Inglês', 'Espanhol'];
+  List<String> _languages = [];
 
+  @override
+  void initState(){
+      super.initState();
+      loadLanguages();
+  }
+
+  Future<void> loadLanguages() async{
+      _languages = await fetchLanguages();
+      setState(() {
+        
+      });
+  }
   // Variável para armazenar a imagem de perfil
   String? _profileImage = 'https://example.com/profile-image.jpg'; // Placeholder 
 
@@ -68,7 +81,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira seu nome';
                   }
-                  return null;
+                  return null;    
                 },
               ),
               SizedBox(height: 16),
@@ -83,7 +96,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                   }
                   if (int.tryParse(value) == null) {
                     return 'Por favor, insira um número válido';
-                  }
+                  } 
                   return null;
                 },
               ),
@@ -118,7 +131,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira seu local de residência';
-                  }
+                  } 
                   return null;
                 },
               ),
