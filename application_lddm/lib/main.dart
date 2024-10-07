@@ -1,8 +1,8 @@
-import 'package:application_lddm/home.dart';
+import 'package:application_lddm/views/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
-import 'perfil.dart';
-import 'loadingInterface.dart';
+import 'views/screens/perfil.dart';
+import 'views/screens/loadingInterface.dart';
 
 Future<void> configureBackground() async {
   const androidConfig = FlutterBackgroundAndroidConfig(
