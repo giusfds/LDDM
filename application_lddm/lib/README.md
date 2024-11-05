@@ -1,5 +1,5 @@
 ## Organização das Pastas
-    
+
 lib/
 ├── models/             
 ├── services/           
