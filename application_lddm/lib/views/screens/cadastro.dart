@@ -1,5 +1,7 @@
+import 'package:application_lddm/entitis/usuario.dart';
 import 'package:flutter/material.dart';
 import 'package:application_lddm/services/languages.dart';
+import 'package:http/http.dart' as http;
 
 class UserRegistrationScreen extends StatefulWidget {
   @override
@@ -44,7 +46,9 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   }
 
   // Função para salvar o formulário
-  void _saveForm() {
+  void _saveForm() async{
+
+    Usuario usuario;
     if (_formKey.currentState!.validate()) {
       // Aqui você faria a lógica de salvar os dados no banco
       // @GLKaiky
@@ -56,7 +60,23 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
       print('Login: ${_loginController.text}');
       print('Senha: ${_passwordController.text}');
       print('Imagem de perfil: $_profileImage');
-      
+
+      //Passando para o objeto usuario.
+      usuario = Usuario(_nameController.text, int.parse(_ageController.text), _selectedLanguage.toString(),
+          _locationController.text, _emailController.text, _loginController.text, _passwordController.text, _profileImage.toString());
+    
+      final url = Uri.parse('https://localhost:3000/usuario/create');
+      final response = await http.post(url,
+      headers: {'Content-Type':'application/json'},
+      body: usuario.toJSON());
+
+      if(response.statusCode == 201){
+
+        print("ababababa");
+
+      }else{
+        print(response.statusCode);
+      }
     }
   }
 
