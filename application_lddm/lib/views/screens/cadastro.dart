@@ -52,20 +52,12 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
     if (_formKey.currentState!.validate()) {
       // Aqui você faria a lógica de salvar os dados no banco
       // @GLKaiky
-      print('Nome: ${_nameController.text}');
-      print('Idade: ${_ageController.text}');
-      print('Língua nativa: $_selectedLanguage');
-      print('Local: ${_locationController.text}');
-      print('Email: ${_emailController.text}');
-      print('Login: ${_loginController.text}');
-      print('Senha: ${_passwordController.text}');
-      print('Imagem de perfil: $_profileImage');
 
       //Passando para o objeto usuario.
       usuario = Usuario(_nameController.text, int.parse(_ageController.text), _selectedLanguage.toString(),
           _locationController.text, _emailController.text, _loginController.text, _passwordController.text, _profileImage.toString());
     
-      final url = Uri.parse('https://localhost:3000/usuario/create');
+      final url = Uri.parse('http://localhost:3000/usuario/create');
       final response = await http.post(url,
       headers: {'Content-Type':'application/json'},
       body: usuario.toJSON());
