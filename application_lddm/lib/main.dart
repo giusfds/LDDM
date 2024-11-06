@@ -1,8 +1,12 @@
 import 'package:application_lddm/views/screens/home.dart';
+import 'package:application_lddm/views/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
 import 'views/screens/perfil.dart';
 import 'views/screens/loadingInterface.dart';
+import 'package:provider/provider.dart';
+import 'package:application_lddm/entitis/userProviders.dart';
+
 
 Future<void> configureBackground() async {
   const androidConfig = FlutterBackgroundAndroidConfig(
@@ -23,14 +27,15 @@ Future<void> configureBackground() async {
   }
 } 
 
-void main() async {
-  // Certificar que tudo foi inicializado corretamente
-  //WidgetsFlutterBinding.ensureInitialized();
-  // Chamar o background
- //      await configureBackground(); 
-
-  // Iniciar o aplicativo
-  runApp(MyApp());
+void main() {
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+      ],
+      child: MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget{
@@ -38,7 +43,7 @@ class MyApp extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner:false,  
-      home: SplashScreen(),
+      home: LoginScreen(),
     );
   }
 }

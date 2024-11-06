@@ -57,9 +57,9 @@ export class UsuarioService {
         }
     }
 
-    async read(login: string, senha: string): Promise<UsuarioDTO | null>{
+    async read(email: string, senha: string): Promise<UsuarioDTO | null>{
         const userFound = await this.usersRepository.findOne({
-            where: {login}
+            where: {email}
         })
 
         if(!userFound)

@@ -12,9 +12,10 @@ export class UsuarioController {
         console.log(this.usuarioService.create(usuario));
     }
 
-    @Get(':login/:senha')
-    read(@Param('login') login: string, @Param('senha') senha: string){
-        console.log(this.usuarioService.read(login, senha));
+    @Get(':email/:senha')
+    read(@Param('email') email: string, @Param('senha') senha: string){
+        return this.usuarioService.read(email, senha);
+
     }
 }
 

@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 import 'home.dart';
 import 'cadastro.dart';
+import 'package:application_lddm/entitis/usuario.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:provider/provider.dart';
+import 'package:application_lddm/entitis/userProviders.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -16,16 +21,28 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController _passwordController = TextEditingController();
 
   // Função para simular o processo de login
-  void _login() {
-    if (_formKey.currentState!.validate()) {
-      // Aqui você pode adicionar a lógica de autenticação
-      print('Email: ${_emailController.text}');
-      print('Senha: ${_passwordController.text}');
+void _login() async {
+  if (_formKey.currentState!.validate()) {
+    final url = Uri.parse('http://localhost:3000/usuario/${_emailController.text}/${_passwordController.text}');
+    final response = await http.get(url);
 
-      // Após a autenticação, você pode redirecionar o usuário para outra tela
-      // Navigator.pushReplacementNamed(context, '/home');
+    if (response.statusCode == 201 || response.statusCode == 200) {
+      final jsonResponse = json.decode(response.body);
+      Usuario usuario = Usuario.fromJson(jsonResponse);
+      
+      // Adiciona o usuário ao UserProvider
+      Provider.of<UserProvider>(context, listen: false).setUsuario(usuario);
+      
+      // Navega para a próxima tela
+      Navigator.pushReplacement(
+        context,
+        PageTransition(child: MyHomePage(), type: PageTransitionType.bottomToTop),
+      );
+    } else {
+      print("Falha na autenticação");
     }
   }
+}
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             SizedBox(height: 32), // Espaço entre a imagem e o formulário
             // Formulário
-            Form(
+            Form( 
               key: _formKey,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -91,18 +108,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
                   // Botão para realizar o login
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        PageTransition(
-                          child: MyHomePage(),
-                          type: PageTransitionType.bottomToTop,
-                        ),
-                      );
-                    },
+                    onPressed: _login,
                     child: Text('Entrar'),
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(200, 50), // Largura fixa para o botão
+                      minimumSize: Size(200, 50), 
+                      // Largura fixa para o botão
                     ),
                   ),
                   SizedBox(height: 20),
