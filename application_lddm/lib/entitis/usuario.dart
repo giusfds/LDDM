@@ -17,9 +17,12 @@ class Usuario {
 
   //List<String> historico = ["a", "b", "c", "d", "e"]; // Seu histórico de línguas
 
-  //---| Construtor |---
-  Usuario(this.nome, this.idade, this.lingua, this.local, this.email, this.login, this.senha, this.imagem);
+  //---| Construtor |---  
+  //
+  Usuario.semID(this.nome, this.idade, this.lingua, this.local, this.email, this.login, this.senha, this.imagem);
 
+  // Construtor nomeado com ID
+  Usuario(this.id, this.nome, this.idade, this.lingua, this.local, this.email, this.login, this.senha, this.imagem);
   //-----------------------------------------
 
   //---| GETs |---
@@ -48,34 +51,21 @@ class Usuario {
 
   //---| MÉTODOS RELACIONADOS AO JSON |---
 
-  //Pegando informações do JSON
-  Future<void> fromJSON() async {
-    // String que conterá o JSON.
-    String conteudo = "";
-
-    // Convertendo de JSON para String.
-    final arquivo = File("jsonNome.json"); // Caminho do arquivo.
-
-    // Lendo o arquivo como String e salvando em "conteudo"
-    conteudo = await arquivo.readAsString();
-
-    // Convertendo a String JSON em um Map
-    final Map<String, dynamic> jsonData = jsonDecode(conteudo);
-
-    // Atribuindo valores às propriedades do usuário a partir do Map
-    nome = jsonData['nome'] ?? " ";
-    idade = jsonData['idade'] ?? -1;
-    lingua = jsonData['lingua_nativa'] ?? " ";
-    local = jsonData['local'] ?? " ";
-    email = jsonData['email'] ?? " ";
-    login = jsonData['login'] ?? " ";
-    senha = jsonData['senha'] ?? " ";
-    imagem = jsonData['imagem_de_perfil'] ?? " ";
-    //historico = List<String>.from(jsonData['historico'] ?? []);
-
-    // Printando a String
-    print("Usuário carregado: $nome, Idade: $idade, Local: $local");
+  // Construtor para criar a partir do JSON
+  factory Usuario.fromJson(Map<String, dynamic> json) {
+    return Usuario(
+      json['id'] ?? " ",
+      json['nome'] ?? " ",
+      json['idade'] ?? -1,
+      json['lingua_nativa'] ?? " ",
+      json['local'] ?? " ",
+      json['email'] ?? " ",
+      json['login'] ?? " ",
+      json['senha'] ?? " ",
+      json['imagem_de_perfil'] ?? " ",
+    );
   }
+
 
   //Retornando para o JSON como String.
 

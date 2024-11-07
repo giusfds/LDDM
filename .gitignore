@@ -1,6 +1,27 @@
 #ignorar env
 .env
 
+# Flutter/Dart/Pub related
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+.macos/
+windows/
+linux/
+
+# iOS/Android related
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/.generated/
+android/.gradle/
+android/app/build/
+android/.idea/
+
+
 # Miscellaneous
 *.class
 *.log
@@ -10,7 +31,7 @@
 .atom/
 .buildlog/
 .history
-.svn/
+.svn/   
 migrate_working_dir/
 
 # IntelliJ related

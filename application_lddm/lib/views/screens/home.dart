@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:page_transition/page_transition.dart';
 import 'globo.dart';
 import 'perfil.dart';
@@ -32,7 +30,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> loadLanguages() async {
     languages = await fetchLanguages(); // Chama a função do outro arquivo
-    setState(() {}); // Atualiza o estado para refletir a lista de idiomas
+    setState(() {}); // Atualiza o estado para refletir a lista de idiomasdata
+
   }
 
 

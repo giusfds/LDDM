@@ -1,4 +1,4 @@
-import { ConflictException, Inject, Injectable } from '@nestjs/common';
+import { ConflictException, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { userEntity } from 'src/db/entities/user.entity';
 import { Repository } from 'typeorm';
@@ -57,9 +57,19 @@ export class UsuarioService {
         }
     }
 
-    async read(login: string, senha: string): Promise<UsuarioDTO | null>{
+    async delete(id: number) {
+        console.log("deeu");
+        const result = await this.usersRepository.delete(id);
+        
+        if(!result.affected){
+            throw new HttpException(`Task with id ${id} not found`, HttpStatus.I_AM_A_TEAPOT);
+        }
+
+    }
+
+    async read(email: string, senha: string): Promise<UsuarioDTO | null>{
         const userFound = await this.usersRepository.findOne({
-            where: {login}
+            where: {email}
         })
 
         if(!userFound)
