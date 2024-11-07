@@ -4,6 +4,7 @@ import 'package:page_transition/page_transition.dart';
 import 'globo.dart';
 import 'login.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
 import 'package:application_lddm/entitis/userProviders.dart';
 
 class UserProfileScreen extends StatelessWidget {
@@ -18,6 +19,30 @@ class UserProfileScreen extends StatelessWidget {
         appBar: AppBar(title: Text("Perfil")),
         body: Center(child: Text("Nenhum usuário encontrado.")),
       );
+    }
+
+    void deletar() async {
+        print(usuario.id);
+        final url = Uri.parse('http://localhost:3000/usuario/${usuario.id}');
+        final response = await http.delete(url);
+
+        if (response.statusCode == 200) {
+          // Limpa os dados do usuário e vai para a tela de login
+          Provider.of<UserProvider>(context, listen: false);
+          Navigator.pushReplacement(
+            context,
+            PageTransition(
+                child: LoginScreen(), type: PageTransitionType.bottomToTop),
+          );
+        } else {
+          // Exibe uma mensagem de erro
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Falha ao deletar o perfil! Tente novamente."),
+              backgroundColor: Colors.red,
+            ),
+          );
+        }
     }
 
     return Scaffold(
@@ -53,7 +78,8 @@ class UserProfileScreen extends StatelessWidget {
                 onChanged: (String? newValue) {
                   // Lógica para alterar a língua nativa, se necessário
                 },
-                items: [usuario.getLingua()].map<DropdownMenuItem<String>>((String value) {
+                items: [usuario.getLingua()]
+                    .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -89,6 +115,16 @@ class UserProfileScreen extends StatelessWidget {
                 },
                 child: Text("Sair"),
               ),
+              SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: deletar, // Passa a função como referência
+                child: Text('Deletar Perfil'),
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.red,
+                    padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                    textStyle:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              )
             ],
           ),
         ),
@@ -115,7 +151,8 @@ class UserProfileScreen extends StatelessWidget {
             Navigator.push(
               context,
               PageTransition(
-                child: CountryLanguageScreen(), // Altere para a tela correspondente
+                child:
+                    CountryLanguageScreen(), // Altere para a tela correspondente
                 type: PageTransitionType.leftToRight,
               ),
             );
@@ -140,4 +177,3 @@ class UserProfileScreen extends StatelessWidget {
     );
   }
 }
-  

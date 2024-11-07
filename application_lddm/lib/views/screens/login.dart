@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
-import 'home.dart';
+import 'perfil.dart';
 import 'cadastro.dart';
 import 'package:application_lddm/entitis/usuario.dart';
 import 'package:http/http.dart' as http;
@@ -29,6 +29,7 @@ void _login() async {
     if (response.statusCode == 201 || response.statusCode == 200) {
       final jsonResponse = json.decode(response.body);
       Usuario usuario = Usuario.fromJson(jsonResponse);
+
       
       // Adiciona o usuário ao UserProvider
       Provider.of<UserProvider>(context, listen: false).setUsuario(usuario);
@@ -36,7 +37,7 @@ void _login() async {
       // Navega para a próxima tela
       Navigator.pushReplacement(
         context,
-        PageTransition(child: MyHomePage(), type: PageTransitionType.bottomToTop),
+        PageTransition(child: UserProfileScreen(), type: PageTransitionType.bottomToTop),
       );
     } else {
       print("Falha na autenticação");

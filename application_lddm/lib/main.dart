@@ -1,9 +1,6 @@
-import 'package:application_lddm/views/screens/home.dart';
 import 'package:application_lddm/views/screens/login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_background/flutter_background.dart';
-import 'views/screens/perfil.dart';
-import 'views/screens/loadingInterface.dart';
 import 'package:provider/provider.dart';
 import 'package:application_lddm/entitis/userProviders.dart';
 

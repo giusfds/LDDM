@@ -1,4 +1,4 @@
-import { Body ,Controller, Get, Post, Param } from '@nestjs/common';
+import { Body ,Controller, Delete , Get, Post, Param } from '@nestjs/common';
 import { UsuarioDTO } from './usuario.dto';
 import { UsuarioService } from './usuario.service';
 
@@ -16,6 +16,12 @@ export class UsuarioController {
     read(@Param('email') email: string, @Param('senha') senha: string){
         return this.usuarioService.read(email, senha);
 
+    }
+
+    @Delete('/:id')
+    remove(@Param('id') id: number){
+        console.log(id);
+        return this.usuarioService.delete(id);
     }
 }
 

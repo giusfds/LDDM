@@ -17,9 +17,12 @@ class Usuario {
 
   //List<String> historico = ["a", "b", "c", "d", "e"]; // Seu histórico de línguas
 
-  //---| Construtor |---
-  Usuario(this.nome, this.idade, this.lingua, this.local, this.email, this.login, this.senha, this.imagem);
+  //---| Construtor |---  
+  //
+  Usuario.semID(this.nome, this.idade, this.lingua, this.local, this.email, this.login, this.senha, this.imagem);
 
+  // Construtor nomeado com ID
+  Usuario(this.id, this.nome, this.idade, this.lingua, this.local, this.email, this.login, this.senha, this.imagem);
   //-----------------------------------------
 
   //---| GETs |---
@@ -51,6 +54,7 @@ class Usuario {
   // Construtor para criar a partir do JSON
   factory Usuario.fromJson(Map<String, dynamic> json) {
     return Usuario(
+      json['id'] ?? " ",
       json['nome'] ?? " ",
       json['idade'] ?? -1,
       json['lingua_nativa'] ?? " ",

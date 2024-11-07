@@ -54,7 +54,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
       // @GLKaiky
 
       //Passando para o objeto usuario.
-      usuario = Usuario(_nameController.text, int.parse(_ageController.text), _selectedLanguage.toString(),
+      usuario = Usuario.semID(_nameController.text, int.parse(_ageController.text), _selectedLanguage.toString(),
           _locationController.text, _emailController.text, _loginController.text, _passwordController.text, _profileImage.toString());
     
       final url = Uri.parse('http://localhost:3000/usuario/create');
