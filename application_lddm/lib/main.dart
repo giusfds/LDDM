@@ -20,7 +20,7 @@ Future<void> configureBackground() async {
     print("Deu boa");
     await FlutterBackground.enableBackgroundExecution();
   } else {
-    print('Fudeu');     
+    print('Erro!');
   }
 } 
 
