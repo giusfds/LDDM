@@ -23,7 +23,7 @@ class _LoginScreenState extends State<LoginScreen> {
   // Função para simular o processo de login
 void _login() async {
   if (_formKey.currentState!.validate()) {
-    final url = Uri.parse('http://localhost:3000/usuario/${_emailController.text}/${_passwordController.text}');
+    final url = Uri.parse('https://lddm.onrender.com/usuario/${_emailController.text}/${_passwordController.text}');
     final response = await http.get(url);
 
     if (response.statusCode == 201 || response.statusCode == 200) {
