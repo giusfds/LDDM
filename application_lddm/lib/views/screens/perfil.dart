@@ -23,7 +23,7 @@ class UserProfileScreen extends StatelessWidget {
 
     void deletar() async {
         print(usuario.id);
-        final url = Uri.parse('http://localhost:3000/usuario/${usuario.id}');
+        final url = Uri.parse('https://lddm.onrender.com/usuario/${usuario.id}');
         final response = await http.delete(url);
 
         if (response.statusCode == 200) {

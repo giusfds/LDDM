@@ -24,49 +24,56 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
   List<String> _languages = [];
 
   @override
-  void initState(){
-      super.initState();
-      loadLanguages();
+  void initState() {
+    super.initState();
+    loadLanguages();
   }
 
-  Future<void> loadLanguages() async{
-      _languages = await fetchLanguages();
-      setState(() {
-        
-      });
+  Future<void> loadLanguages() async {
+    print("Carregando línguas...");
+    _languages = await fetchLanguages();
+    print("Línguas carregadas: $_languages");
+    setState(() {});
   }
+
   // Variável para armazenar a imagem de perfil
-  String? _profileImage = 'https://example.com/profile-image.jpg'; // Placeholder 
+  String? _profileImage =
+      'https://example.com/profile-image.jpg'; // Placeholder
 
   void _selectProfileImage() {
     // Substituir isso pela implementação real de escolha de imagem
     setState(() {
-      _profileImage = 'https://example.com/new-profile-image.jpg'; // URL simulada
+      _profileImage =
+          'https://example.com/new-profile-image.jpg'; // URL simulada
     });
   }
 
   // Função para salvar o formulário
-  void _saveForm() async{
-
+  void _saveForm() async {
     Usuario usuario;
     if (_formKey.currentState!.validate()) {
       // Aqui você faria a lógica de salvar os dados no banco
       // @GLKaiky
 
       //Passando para o objeto usuario.
-      usuario = Usuario.semID(_nameController.text, int.parse(_ageController.text), _selectedLanguage.toString(),
-          _locationController.text, _emailController.text, _loginController.text, _passwordController.text, _profileImage.toString());
-    
-      final url = Uri.parse('http://localhost:3000/usuario/create');
+      usuario = Usuario.semID(
+          _nameController.text,
+          int.parse(_ageController.text),
+          _selectedLanguage.toString(),
+          _locationController.text,
+          _emailController.text,
+          _loginController.text,
+          _passwordController.text,
+          _profileImage.toString());
+
+      final url = Uri.parse('https://lddm.onrender.com/usuario/create');
       final response = await http.post(url,
-      headers: {'Content-Type':'application/json'},
-      body: usuario.toJSON());
+          headers: {'Content-Type': 'application/json'},
+          body: usuario.toJSON());
 
-      if(response.statusCode == 201){
-
+      if (response.statusCode == 201) {
         print("ababababa");
-
-      }else{
+      } else {
         print(response.statusCode);
       }
     }
@@ -93,7 +100,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira seu nome';
                   }
-                  return null;    
+                  return null;
                 },
               ),
               SizedBox(height: 16),
@@ -105,10 +112,10 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira sua idade';
-                  }   
+                  }
                   if (int.tryParse(value) == null) {
                     return 'Por favor, insira um número válido';
-                  } 
+                  }
                   return null;
                 },
               ),
@@ -143,7 +150,7 @@ class _UserRegistrationScreenState extends State<UserRegistrationScreen> {
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Por favor, insira seu local de residência';
-                  } 
+                  }
                   return null;
                 },
               ),
