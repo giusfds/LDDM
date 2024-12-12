@@ -1,15 +1,15 @@
-// camera_page.dart
+import 'dart:io';
+
 import 'package:application_lddm/views/screens/perfil.dart';
 import 'package:application_lddm/views/screens/traducao.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-// Use alias para evitar conflitos entre bibliotecas
-import 'package:google_ml_kit/google_ml_kit.dart' as mlkit;
-import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart' as mlkit_text_recognition;
 import 'package:page_transition/page_transition.dart';
+import 'package:application_lddm/services/GeminiApiService.dart';
 
 import 'globo.dart';
 import 'home.dart';
+
 
 class CameraPage extends StatefulWidget {
   @override
@@ -21,16 +21,17 @@ class _CameraPageState extends State<CameraPage> {
   List<CameraDescription>? cameras;
   bool _isCameraInitialized = false;
 
+  late GeminiApiService _geminiService;
+
   @override
   void initState() {
     super.initState();
+    _geminiService = GeminiApiService();
     _initializeCamera();
   }
 
-  //Inicialização da Camera
+  // Inicialização da Câmera
   void _initializeCamera() async {
-
-    //Esperando a camera até quando estiver disponivel.
     cameras = await availableCameras();
 
     if (cameras != null && cameras!.isNotEmpty) {
@@ -42,51 +43,70 @@ class _CameraPageState extends State<CameraPage> {
     }
   }
 
+Future<void> _takePictureAndSendToGemini() async {
+  if (!_controller!.value.isInitialized || _controller!.value.isTakingPicture) {
+    return;
+  }
+  try {
+    final XFile picture = await _controller!.takePicture();
+    final File imageFile = File(picture.path);
+    const prompt =
+        "Transcreva o texto, traduzindo ele e retorne a tradução informando o idioma original e o idioma traduzido, nao diga frases a mais além do que foi pedido.";
+
+    final result = await _geminiService.uploadAndProcessImage(imageFile, prompt);
+
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Resultado da Transcrição"),
+        content: Text(result ?? "Erro ao processar a imagem."),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: Text("OK"),
+          ),
+        ],
+      ),
+    );
+  } catch (e) {
+    print("Erro ao processar imagem: $e");
+  }
+}
+
   @override
   void dispose() {
     _controller?.dispose();
     super.dispose();
   }
 
-  // Função para tirar a foto
-  void _takePicture() async {
-    if (_controller != null && _controller!.value.isInitialized) {
-      XFile picture = await _controller!.takePicture();
-      _processImage(picture);
-    }
-  }
-
-  // Função para processar a imagem e extrair texto com OCR
-  void _processImage(XFile image) async {
-
-    // Usando alias para InputImage
-    final mlkit_text_recognition.InputImage inputImage = mlkit_text_recognition.InputImage.fromFilePath(image.path);
-    final mlkit_text_recognition.TextRecognizer textRecognizer = mlkit_text_recognition.TextRecognizer();
-    final mlkit_text_recognition.RecognizedText recognizedText = await textRecognizer.processImage(inputImage);
-
-    String scannedText = recognizedText.text;
-    print('=========|| Texto Escaneado: $scannedText');
-
-    // Exemplo de uso do texto escaneado
-    textRecognizer.close();
-  }
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text('WorldChat - Camera'),
       ),
-
       body: _isCameraInitialized
-          ? CameraPreview(_controller!)
+          ? Stack(
+              children: [
+                // Exibe a câmera ocupando todo o espaço disponível
+                Positioned.fill(
+                  child: CameraPreview(_controller!),
+                ),
+                // Botão centralizado na tela
+                Center(
+                  child: ElevatedButton.icon(
+                    onPressed: _takePictureAndSendToGemini,
+                    icon: Icon(Icons.camera_alt, size: 24),
+                    label: Text(""),
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(), backgroundColor: Colors.black.withOpacity(0.5),
+                      padding: EdgeInsets.all(16), // Cor do botão
+                    ),
+                  ),
+                ),
+              ],
+            )
           : Center(child: CircularProgressIndicator()),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _takePicture,
-        child: Icon(Icons.camera),
-      ),
-
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
