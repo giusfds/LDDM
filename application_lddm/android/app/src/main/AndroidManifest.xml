@@ -3,6 +3,11 @@
 
     <!-- Permissões necessárias -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<<<<<<< HEAD
+=======
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+>>>>>>> 8a31e92c612980e6bc9681eaa3bf7e816dd29a3d
 
     <application
         android:label="application_lddm"
