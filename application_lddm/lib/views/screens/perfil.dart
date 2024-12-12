@@ -1,6 +1,13 @@
 import 'package:application_lddm/views/screens/home.dart';
+<<<<<<< HEAD
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
+=======
+import 'package:application_lddm/views/screens/traducao.dart';
+import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
+import 'camera.dart';
+>>>>>>> 8a31e92c612980e6bc9681eaa3bf7e816dd29a3d
 import 'globo.dart';
 import 'login.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +15,10 @@ import 'package:http/http.dart' as http;
 import 'package:application_lddm/entitis/userProviders.dart';
 
 class UserProfileScreen extends StatelessWidget {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8a31e92c612980e6bc9681eaa3bf7e816dd29a3d
   @override
   Widget build(BuildContext context) {
     // Obtendo as informações do usuário do UserProvider
@@ -130,6 +141,7 @@ class UserProfileScreen extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+<<<<<<< HEAD
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.language),
@@ -143,10 +155,20 @@ class UserProfileScreen extends StatelessWidget {
             icon: Icon(Icons.person),
             label: 'Perfil',
           ),
+=======
+        type: BottomNavigationBarType.fixed,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(icon: Icon(Icons.language), label: 'País'),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Chat'),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Perfil'),
+          BottomNavigationBarItem(icon: Icon(Icons.camera), label: 'Camera'),
+          BottomNavigationBarItem(icon: Icon(Icons.text_fields), label: 'Tradução'),
+>>>>>>> 8a31e92c612980e6bc9681eaa3bf7e816dd29a3d
         ],
         currentIndex: 2,
         onTap: (index) {
           if (index == 0) {
+<<<<<<< HEAD
             // Navegação para a tela de países
             Navigator.push(
               context,
@@ -170,6 +192,31 @@ class UserProfileScreen extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => UserProfileScreen()),
+=======
+            Navigator.push(
+              context,
+              PageTransition(child: CountryLanguageScreen(), type: PageTransitionType.leftToRight),
+            );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage()),
+            );
+          } else if (index == 2) {
+            Navigator.push(
+              context,
+              PageTransition(child: UserProfileScreen(), type: PageTransitionType.rightToLeft),
+            );
+          } else if (index == 3) {
+            Navigator.push(
+              context,
+              PageTransition(child: CameraPage(), type: PageTransitionType.rightToLeft),
+            );
+          } else if (index == 4) {
+            Navigator.push(
+              context,
+              PageTransition(child: Traducao(), type: PageTransitionType.rightToLeft),
+>>>>>>> 8a31e92c612980e6bc9681eaa3bf7e816dd29a3d
             );
           }
         },
