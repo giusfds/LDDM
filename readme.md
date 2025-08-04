@@ -1,41 +1,52 @@
-# LDDM
-Laboratório de Desenvolvimento de Dispositivos Móveis @ PUC-MG
+# Laboratório de Desenvolvimento de Dispositivos Móveis (LDDM) 📱
 
-## Description
-This is a repository for the course "Laboratório de Desenvolvimento de Dispositivos Móveis" (Mobile Devices Development Laboratory) at the Pontifícia Universidade Católica de Minas Gerais (PUC-MG). The course is taught by Professor [Ilo Amy Saldanha Rivero](https://www.linkedin.com/in/ilorivero/)
+Repositório da disciplina **Laboratório de Desenvolvimento de Dispositivos Móveis** (LDDM), ministrada pelo professor **Ilo Amy Saldanha Rivero** na PUC Minas.
 
-please, put your name here if you are contributing to this repository, this was another hint to my group. (alphabetical order)
+## 🎯 Objetivo
 
-- [Giuseppe Cordeiro](https://www.linkedin.com/in/giuseppecordeiro/)
-- [Kaiky França](https://www.linkedin.com/in/glkaiky/)
-- [Samuel Horta de Faria](www.linkedin.com/in/samuelhortafaria)
-- [Suzane Lemos](https://www.linkedin.com/in/suzane-lemos)
+O foco da disciplina é o desenvolvimento de aplicações móveis utilizando **Flutter**, com ênfase em práticas de desenvolvimento colaborativo, uso de repositórios Git e boas práticas de versionamento de código.
 
-## Projects
-- [application_lddm](/application_lddm/)
+Neste projeto, o grupo desenvolve um aplicativo que captura a tela do dispositivo e realiza **tradução em tempo real** para o idioma escolhido pelo usuário.
 
+## 👥 Integrantes do grupo (ordem alfabética)
 
-## Getting Started
-This project is a starting point for a Flutter application. Important detail, I've never used flutter in my life, so don't expect it to be the best work ever. I'm learning and I'm trying to do my best.
+- **Giuseppe Cordeiro**
+- **Kaiky França**
+- **Samuel Horta de Faria**
+- **Suzane Lemos**
 
-### Rules
-- Please, don't push directly to the main branch. Create a new branch and make a pull request to `DEV` branch.
-- Make sure to comment your code in English.
-- Make sure to comment your commit following the pattern: 
-    - create => `create: create a new file`
-    - new feature => `feat: new feature`
-    - bug fix => `fix: bug fix`
-    - documentation => `docs: documentation`
+## 📂 Estrutura do Repositório
 
-### How to contribute
-- Fork this repository
-- Clone your fork: `git clone`
-- Create a branch: `git checkout -b my-branch`
-    - Please, don't use the main branch
-    - each student should create a branch with their name, i'll decide if the pull request will be accepted or not, just to make sure that is some one from the group
-- Make your changes
-- Commit your changes: `git commit -m 'my changes'`
-- Push your branch: `git push origin my-branch`
-- Create a pull request
+- `application_lddm/` — Código-fonte do aplicativo Flutter.
 
+## 🚀 Como começar
 
+Este projeto é um ponto de partida para uma aplicação Flutter. Todos os membros estão em processo de aprendizado, então o objetivo principal é praticar e evoluir em conjunto.
+
+## 📌 Regras do Projeto
+
+- **Não fazer push direto na branch `main`.**
+- Criar uma nova branch com seu nome e realizar pull requests para a branch `dev`.
+- Comente seu código **em inglês**.
+- Siga o padrão de commits:
+
+| Ação         | Prefixo     | Exemplo                     |
+|--------------|-------------|-----------------------------|
+| Novo arquivo | `create:`   | `create: home_screen.dart`  |
+| Nova feature | `feat:`     | `feat: add translation API` |
+| Correção     | `fix:`      | `fix: resolve layout bug`   |
+| Documentação | `docs:`     | `docs: update README`       |
+
+## 🤝 Como contribuir
+
+1. Fork este repositório
+2. Clone o fork: `git clone <url-do-seu-fork>`
+3. Crie uma branch: `git checkout -b seu-nome`
+4. Faça suas alterações
+5. Commit: `git commit -m 'feat: minha funcionalidade'`
+6. Push: `git push origin sua-branch`
+7. Crie um Pull Request para a branch `dev`
+
+---
+
+> Projeto desenvolvido por alunos da Ciência da Computação — PUC Minas.
